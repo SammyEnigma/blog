@@ -68,7 +68,8 @@ add_executable(exceptions exceptions.cpp)
 # target_link_libraries(fmt -lfmt)
 
 add_executable(geoip geoip.cpp)
-target_link_libraries(geoip ${CURL_LIBRARY} ${CURLPP_LIBRARY})
+target_include_directories(geoip PUBLIC "${CURL_INCLUDE_DIRS}" "${CURLPP_INCLUDE_DIRS}")
+target_link_libraries(geoip ${CURLPP_LIBRARIES})
 
 add_custom_command(
 	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/grpc_service.pb.h
